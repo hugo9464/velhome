@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>642989936653-ub5orp1cn1a51svvmshhbgqb9nb3p701.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.642989936653-ub5orp1cn1a51svvmshhbgqb9nb3p701</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>642989936653-kugqnohnug41mg63qgt6g5fqckecb60g.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBSc9al3hO5uETQ-EzUNyAHxpwrW0Kdx-k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>642989936653</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.velhome.app</string>
+	<key>PROJECT_ID</key>
+	<string>velhome-4bd75</string>
+	<key>STORAGE_BUCKET</key>
+	<string>velhome-4bd75.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:642989936653:ios:557cc32e734aa53912c544</string>
+</dict>
+</plist>
