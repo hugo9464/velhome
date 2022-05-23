@@ -1,4 +1,5 @@
 import '../backend/backend.dart';
+import '../flutter_flow/chat/index.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -18,12 +19,14 @@ class HostBottomSheetWidget extends StatefulWidget {
 }
 
 class _HostBottomSheetWidgetState extends State<HostBottomSheetWidget> {
+  ChatsRecord groupChat;
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<UsersRecord>>(
       stream: queryUsersRecord(
         queryBuilder: (usersRecord) =>
-            usersRecord.where('uuid', isEqualTo: widget.proposal.hostId),
+            usersRecord.where('uid', isEqualTo: widget.proposal.hostId),
         singleRecord: true,
       ),
       builder: (context, snapshot) {
@@ -80,7 +83,7 @@ class _HostBottomSheetWidgetState extends State<HostBottomSheetWidget> {
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(0, 4, 16, 0),
                         child: Text(
-                          containerUsersRecord.firstName,
+                          containerUsersRecord.displayName,
                           style: FlutterFlowTheme.of(context).title1.override(
                                 fontFamily: 'Lexend Deca',
                                 color: Color(0xFF090F13),
@@ -126,6 +129,10 @@ class _HostBottomSheetWidgetState extends State<HostBottomSheetWidget> {
                     ),
                   ],
                 ),
+                Text(
+                  FFAppState().usersForChat.length.toString(),
+                  style: FlutterFlowTheme.of(context).bodyText1,
+                ),
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 24, 0, 44),
                   child: Row(
@@ -133,8 +140,12 @@ class _HostBottomSheetWidgetState extends State<HostBottomSheetWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          groupChat = await FFChatManager.instance.createChat(
+                            FFAppState().usersForChat.toList(),
+                          );
+
+                          setState(() {});
                         },
                         text: 'Contacter',
                         options: FFButtonOptions(

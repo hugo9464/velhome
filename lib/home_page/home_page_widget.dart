@@ -1,9 +1,9 @@
+import '../auth/auth_util.dart';
 import '../backend/backend.dart';
 import '../components/host_bottom_sheet_widget.dart';
 import '../flutter_flow/flutter_flow_google_map.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
-import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,10 +15,10 @@ class HomePageWidget extends StatefulWidget {
 }
 
 class _HomePageWidgetState extends State<HomePageWidget> {
-  LatLng currentUserLocationValue;
-  final scaffoldKey = GlobalKey<ScaffoldState>();
   LatLng googleMapsCenter;
   final googleMapsController = Completer<GoogleMapController>();
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+  LatLng currentUserLocationValue;
 
   @override
   void initState() {
@@ -91,6 +91,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   );
                                 },
                               );
+                              setState(() => FFAppState()
+                                  .usersForChat
+                                  .add(currentUserReference));
+                              setState(() => FFAppState()
+                                  .usersForChat
+                                  .add(googleMapProposalsRecord.host));
                             },
                           ),
                         )
@@ -109,26 +115,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     centerMapOnMarkerTap: true,
                   );
                 },
-              ),
-            ),
-            FFButtonWidget(
-              onPressed: () {
-                print('Button pressed ...');
-              },
-              text: 'Button',
-              options: FFButtonOptions(
-                width: 130,
-                height: 40,
-                color: FlutterFlowTheme.of(context).primaryColor,
-                textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                      fontFamily: 'Poppins',
-                      color: Colors.white,
-                    ),
-                borderSide: BorderSide(
-                  color: Colors.transparent,
-                  width: 1,
-                ),
-                borderRadius: 12,
               ),
             ),
           ],

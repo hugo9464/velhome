@@ -15,6 +15,7 @@ import 'lat_lng.dart';
 
 export 'lat_lng.dart';
 export 'place.dart';
+export '../app_state.dart';
 export 'dart:math' show min, max;
 export 'package:intl/intl.dart';
 export 'package:cloud_firestore/cloud_firestore.dart' show DocumentReference;
@@ -159,18 +160,20 @@ bool responsiveVisibility({
 
 LatLng cachedUserLocation;
 Future<LatLng> getCurrentUserLocation(
-        {LatLng defaultLocation, bool cached = false}) async =>
-    cached && cachedUserLocation != null
-        ? cachedUserLocation
-        : queryCurrentUserLocation().then((loc) {
-            if (loc != null) {
-              cachedUserLocation = loc;
-            }
-            return loc;
-          }).onError((error, _) {
-            print("Error querying user location: $error");
-            return defaultLocation;
-          });
+    {LatLng defaultLocation, bool cached = false}) async {
+  if (cached && cachedUserLocation != null) {
+    return cachedUserLocation;
+  }
+  return queryCurrentUserLocation().then((loc) {
+    if (loc != null) {
+      cachedUserLocation = loc;
+    }
+    return loc ?? defaultLocation;
+  }).onError((error, _) {
+    print("Error querying user location: $error");
+    return defaultLocation;
+  });
+}
 
 Future<LatLng> queryCurrentUserLocation() async {
   final serviceEnabled = await Geolocator.isLocationServiceEnabled();

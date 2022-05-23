@@ -54,6 +54,12 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                   borderRadius: 12,
                 ),
               ),
+              AuthUserStreamWidget(
+                child: Text(
+                  valueOrDefault(currentUserDocument?.firstName, ''),
+                  style: FlutterFlowTheme.of(context).bodyText1,
+                ),
+              ),
             ],
           ),
         ),

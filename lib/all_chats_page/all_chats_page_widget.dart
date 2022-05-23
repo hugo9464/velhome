@@ -74,19 +74,17 @@ class _AllChatsPageWidgetState extends State<AllChatsPageWidget> {
                       final chatInfo =
                           snapshot.data ?? FFChatInfo(listViewChatsRecord);
                       return FFChatPreview(
-                        onTap: chatInfo != null
-                            ? () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ChatPageWidget(
-                                      chatUser: chatInfo.otherUsers.length == 1
-                                          ? chatInfo.otherUsersList.first
-                                          : null,
-                                      chatRef: chatInfo.chatRecord.reference,
-                                    ),
-                                  ),
-                                )
-                            : null,
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ChatPageWidget(
+                              chatUser: chatInfo.otherUsers.length == 1
+                                  ? chatInfo.otherUsersList.first
+                                  : null,
+                              chatRef: chatInfo.chatRecord.reference,
+                            ),
+                          ),
+                        ),
                         lastChatText: chatInfo.chatPreviewMessage(),
                         lastChatTime: listViewChatsRecord.lastMessageTime,
                         seen: listViewChatsRecord.lastMessageSeenBy

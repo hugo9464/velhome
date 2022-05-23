@@ -24,6 +24,9 @@ abstract class ProposalsRecord
   String get hostId;
 
   @nullable
+  DocumentReference get host;
+
+  @nullable
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference get reference;
 
@@ -57,6 +60,7 @@ Map<String, dynamic> createProposalsRecordData({
   LatLng location,
   String frequency,
   String hostId,
+  DocumentReference host,
 }) =>
     serializers.toFirestore(
         ProposalsRecord.serializer,
@@ -64,4 +68,5 @@ Map<String, dynamic> createProposalsRecordData({
           ..location = location
           ..frequency = frequency
           ..types = null
-          ..hostId = hostId));
+          ..hostId = hostId
+          ..host = host));
